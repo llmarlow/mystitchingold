@@ -8,4 +8,7 @@ class Project < ActiveRecord::Base
 
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :finished_image, :content_type => /\Aimage\/.*\Z/
+  
+  validates :finished_image, presence: true
+  validates :name, presence: true
 end
