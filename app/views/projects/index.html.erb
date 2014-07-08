@@ -6,7 +6,7 @@
       <div class="panel-body">
         <h4><%= project.name %></h4>
         <%= project.user.email if project.user %>
-        <% if project.user == current_user %>
+        <% if current_user && project.user == current_user %>
         <%= link_to edit_project_path(project) do %>
               <span class="glyphicon glyphicon-edit"></span>
               Edit
