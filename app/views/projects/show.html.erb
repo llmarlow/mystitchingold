@@ -78,7 +78,7 @@
            <div id="updates" class="transitions-enabled"> 
             <% @project.updates.order("update_date desc").each do |update| %>
             <div class="box">
-              <%= image_tag update.update_image.url(:medium) %>
+              <%= image_tag update.update_image.url(:medium), class: "img-thumbnail" %>
               <h4 class="center"><%= update.hours %> hours on <%= update.update_date.strftime("%d/%m/%y") %></h4>
               <p class="center">
                 <%= link_to 'Destroy Update', [update.project, update],
