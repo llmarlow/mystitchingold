@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  has_many :updates, dependent: :destroy
   has_attached_file :finished_image, styles: {
     thumb: '100x100>',
     square: '200x200#',
@@ -11,4 +12,6 @@ class Project < ActiveRecord::Base
   
   validates :finished_image, presence: true
   validates :name, presence: true
+  validates :name, uniqueness: true
+  
 end

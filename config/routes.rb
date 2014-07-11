@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :projects
-
+  resources :projects do
+    resources :updates
+  end
   devise_for :users
+  resources :users, :only => [:show]
+  
+  match 'users/:id' => 'users#show', via: :get
+  
   get 'pages/home'
   root "projects#index"
   get "about" => "pages#about"
