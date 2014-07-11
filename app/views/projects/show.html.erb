@@ -40,7 +40,11 @@
        </div>
        <div id="collapseTwo" class="panel-collapse collapse">
          <div class="panel-body">
-          <%= form_for([@project, @project.updates.build]) do |f| %>
+          <%= form_for([@project, @project.updates.build], :html => { :multipart => true  }) do |f| %>
+           <div class="form-group">
+             <%= f.label :update_image %>
+             <%= f.file_field :update_image, class: "form-control" %>
+          </div>  
           <div class="form-group">
             <%= f.label :hours %>
             <%= f.text_field :hours, autofocus: true, class: "form-control" %>
@@ -74,6 +78,7 @@
            <div id="updates" class="transitions-enabled"> 
             <% @project.updates.order("update_date desc").each do |update| %>
             <div class="box">
+              <%= image_tag update.update_image.url(:medium) %>
               <h4 class="center"><%= update.hours %> hours on <%= update.update_date.strftime("%d/%m/%y") %></h4>
               <p class="center">
                 <%= link_to 'Destroy Update', [update.project, update],

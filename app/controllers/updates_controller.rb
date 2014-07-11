@@ -21,6 +21,6 @@ class UpdatesController < ApplicationController
  
   private
   def update_params
-      params.require(:update).permit(:hours, :update_date)
+    params.require(:update).permit(:hours, :update_date, :update_image)
     end
 end
