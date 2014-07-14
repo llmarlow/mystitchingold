@@ -82,11 +82,13 @@
             <div class="box">
               <%= image_tag update.update_image.url(:medium), class: "img-thumbnail" %>
               <h4 class="center"><%= update.hours %> hours on <%= update.update_date.strftime("%d/%m/%y") %></h4>
+              <% if @project.user == current_user %>
               <p class="center">
                 <%= link_to 'Destroy Update', [update.project, update],
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
               </p>
+              <% end %>
             </div>
             <% end %>
            </div>
