@@ -80,6 +80,7 @@
            <div id="updates" class="transitions-enabled"> 
             <% @project.updates.order("update_date desc").each do |update| %>
             <div class="box">
+              <% if @updates %>
               <%= image_tag update.update_image.url(:medium), class: "img-thumbnail" %>
               <h4 class="center"><%= update.hours %> hours on <%= update.update_date.strftime("%d/%m/%y") %></h4>
               <% if @project.user == current_user %>
@@ -88,6 +89,9 @@
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
               </p>
+              <% else %>
+              <p>No Updates</p>
+              <% end %>
               <% end %>
             </div>
             <% end %>
