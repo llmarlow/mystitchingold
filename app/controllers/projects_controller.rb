@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @projects = @user.projects.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @projects = current_user.projects.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   def show
