@@ -9,7 +9,8 @@
 
   <div class="col-md-4">
     <p><strong><h4><%= @project.name %></h4></strong><p>
-    <p>by <%= @project.description %></p>
+    <p><strong>by <%= project.user.username if project.user %></strong></p>
+    <p><%= @project.description %></p>
     <% if @project.user == current_user %>
 <%= link_to edit_project_path(@project) do %>
               <span class="glyphicon glyphicon-edit"></span>
