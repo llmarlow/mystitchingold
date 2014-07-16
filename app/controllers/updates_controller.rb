@@ -12,6 +12,9 @@ class UpdatesController < ApplicationController
       @update = @project.updates.find(params[:id])
       @update.destroy
     end
+    
+    def show
+    end
 
     respond_to do |format|
       format.html { redirect_to :back }
