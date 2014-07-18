@@ -79,7 +79,7 @@
        <div id="collapseOne" class="panel-collapse collapse.in">
          <div class="panel-body">
            <div id="updates" class="transitions-enabled"> 
-            <% @project.updates.order("update_date desc").each do |update| %>
+            <% @project.updates.order("update_date desc").each_with_index do |update, index| %>
             <div class="box">
               <%= image_tag update.update_image.url(:medium), class: "img-thumbnail" %>
               <h4 class="center"><%= update.hours %> hours on <%= update.update_date.strftime("%d/%m/%y") %></h4>
@@ -91,12 +91,12 @@
               
               <% end %>
               <!-- Button trigger modal -->
-                <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#MyModal">
+                <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#MyModal<%= index %>">
                   View Update
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="<%= update.update_date.strftime("%d/%m/%y") %>" aria-hidden="true">
+              <div class="modal fade" id="MyModal<%= index %>" tabindex="-1" role="dialog" aria-labelledby="<%= update.update_date.strftime("%d/%m/%y") %>" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
